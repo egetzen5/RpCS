@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of RpCS is to ...
+Coronavirus has spread through most countries in the world. Xi (2020) developed a novel Monte Carlo simulation procedure for modeling Covid19 spread over time. In this package, we implement the simulation, recreate Fig 2 which explores active infections over a number of days under a variety of parameter settings (see paper), and additionally we incorporate a daily hospitalization rate into the simulation.
 
 ## Installation
 

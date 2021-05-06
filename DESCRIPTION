@@ -1,16 +1,23 @@
 Package: RpCS
-Title: What the Package Does (One Line, Title Case)
+Title: Reproduces Covid19 Simulations from Xi (2020)
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    person(given = "Emily",
+           family = "Getzen",
+           role = "cre",
+           email = "egetzen5@gmail.com")
+Description: Coronavirus has spread through most countries in the world. Xi (2020) developed a novel Monte Carlo simulation procedure for modeling Covid19 spread over time. In this package, we implement the simulation, recreate Fig 2 which explores active infections over a number of days under a variety of parameter settings (see paper), and additionally we incorporate a daily hospitalization rate into the simulation.
+License: Artistic-2.0
 Encoding: UTF-8
+Depends: R (>= 3.1.0)
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+Imports:
+    doParallel,
+    fame,
+    foreach,
+    parallel,
+    stats
+    
+
