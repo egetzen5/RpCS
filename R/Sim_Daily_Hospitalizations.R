@@ -140,14 +140,16 @@ Sim_Daily_Hospitalizations = function(MU1=4,MU2 = 3.6,dat1 = StandardData,dat2 =
 
   if(parallel == TRUE){
 
+    allseeds = seq(1,10000,1)
+    seeds = sample(allseeds,max_iter)
 
     cores=detectCores()
-    cl <- makeCluster(7,type="SOCK")#not to overload your computer
+    cl <- makeCluster(cores-1,type="SOCK")#not to overload your computer
     registerDoParallel(cl)
 
 
     final <- foreach(i=1:max_iter, .combine=cbind) %dopar% {
-
+      set.seed(seeds[i])
       run1.11 = (Simul_hosp(period=100, muT=MU1,rt = dat1,size=size1))$hospday
       run1.11
     }
@@ -159,11 +161,11 @@ Sim_Daily_Hospitalizations = function(MU1=4,MU2 = 3.6,dat1 = StandardData,dat2 =
 
 
     cores=detectCores()
-    cl <- makeCluster(7,type="SOCK")#not to overload your computer
+    cl <- makeCluster(cores-1,type="SOCK")#not to overload your computer
     registerDoParallel(cl)
 
     final <- foreach(i=1:max_iter, .combine=cbind) %dopar% {
-
+      set.seed(seeds[i])
       run1.12 = (Simul_hosp(period=100, muT=MU1,rt = dat2,size=size1))$hospday
       run1.12
     }
@@ -175,13 +177,13 @@ Sim_Daily_Hospitalizations = function(MU1=4,MU2 = 3.6,dat1 = StandardData,dat2 =
     stopCluster(cl)
 
     cores=detectCores()
-    cl <- makeCluster(7,type="SOCK")#not to overload your computer
+    cl <- makeCluster(cores-1,type="SOCK")#not to overload your computer
     registerDoParallel(cl)
 
 
 
     final <- foreach(i=1:max_iter, .combine=cbind) %dopar% {
-
+      set.seed(seeds[i])
       run1.21 = (Simul_hosp(period=100, muT=MU2,rt = dat1,size=size1))$hospday
       run1.21
     }
@@ -193,11 +195,11 @@ Sim_Daily_Hospitalizations = function(MU1=4,MU2 = 3.6,dat1 = StandardData,dat2 =
 
 
     cores=detectCores()
-    cl <- makeCluster(7,type="SOCK")#not to overload your computer
+    cl <- makeCluster(cores-1,type="SOCK")#not to overload your computer
     registerDoParallel(cl)
 
     final <- foreach(i=1:max_iter, .combine=cbind) %dopar% {
-
+      set.seed(seeds[i])
       run1.22 = (Simul_hosp(period=100, rt=dat2,muT=MU2,size=size1))$hospday
       run1.22
     }
@@ -208,11 +210,11 @@ Sim_Daily_Hospitalizations = function(MU1=4,MU2 = 3.6,dat1 = StandardData,dat2 =
 
 
     cores=detectCores()
-    cl <- makeCluster(7,type="SOCK")#not to overload your computer
+    cl <- makeCluster(cores-1,type="SOCK")#not to overload your computer
     registerDoParallel(cl)
 
     final <- foreach(i=1:max_iter, .combine=cbind) %dopar% {
-
+      set.seed(seeds[i])
       run1.31 = (Simul_hosp(period=100,rt=dat1, muT=MU1,size=size2))$hospday
       run1.31
     }
@@ -223,11 +225,11 @@ Sim_Daily_Hospitalizations = function(MU1=4,MU2 = 3.6,dat1 = StandardData,dat2 =
 
 
     cores=detectCores()
-    cl <- makeCluster(7,type="SOCK")#not to overload your computer
+    cl <- makeCluster(cores-1,type="SOCK")#not to overload your computer
     registerDoParallel(cl)
 
     final <- foreach(i=1:max_iter, .combine=cbind) %dopar% {
-
+      set.seed(seeds[i])
       run1.32 = (Simul_hosp(period=100,rt=dat2,muT=MU1,size=size2))$hospday
       run1.32
     }
@@ -238,11 +240,11 @@ Sim_Daily_Hospitalizations = function(MU1=4,MU2 = 3.6,dat1 = StandardData,dat2 =
 
 
     cores=detectCores()
-    cl <- makeCluster(7,type="SOCK")#not to overload your computer
+    cl <- makeCluster(cores-1,type="SOCK")#not to overload your computer
     registerDoParallel(cl)
 
     final <- foreach(i=1:max_iter, .combine=cbind) %dopar% {
-
+      set.seed(seeds[i])
       run2.11 = (Simul_hosp(period=100,rt=dat1 ,muT=MU1,size=size1))$hospday
       run2.11
     }
@@ -254,11 +256,11 @@ Sim_Daily_Hospitalizations = function(MU1=4,MU2 = 3.6,dat1 = StandardData,dat2 =
 
 
     cores=detectCores()
-    cl <- makeCluster(7,type="SOCK")#not to overload your computer
+    cl <- makeCluster(cores-1,type="SOCK")#not to overload your computer
     registerDoParallel(cl)
 
     final <- foreach(i=1:max_iter, .combine=cbind) %dopar% {
-
+      set.seed(seeds[i])
       run2.12 = (Simul_hosp(period=100, rt=dat3,muT=MU1,size=size1))$hospday
       run2.12
     }
@@ -270,11 +272,11 @@ Sim_Daily_Hospitalizations = function(MU1=4,MU2 = 3.6,dat1 = StandardData,dat2 =
 
 
     cores=detectCores()
-    cl <- makeCluster(7,type="SOCK")#not to overload your computer
+    cl <- makeCluster(cores-1,type="SOCK")#not to overload your computer
     registerDoParallel(cl)
 
     final <- foreach(i=1:max_iter, .combine=cbind) %dopar% {
-
+      set.seed(seeds[i])
       run2.21 = (Simul_hosp(period=100, rt=dat1,muT=MU2,size=size1))$hospday
       run2.21
     }
@@ -286,12 +288,12 @@ Sim_Daily_Hospitalizations = function(MU1=4,MU2 = 3.6,dat1 = StandardData,dat2 =
 
 
     cores=detectCores()
-    cl <- makeCluster(7,type="SOCK")#not to overload your computer
+    cl <- makeCluster(cores-1,type="SOCK")#not to overload your computer
     registerDoParallel(cl)
 
 
     final <- foreach(i=1:max_iter, .combine=cbind) %dopar% {
-
+      set.seed(seeds[i])
       run2.22 = (Simul_hosp(period=100, rt=dat3,muT=MU2,size=size1))$hospday
       run2.22
     }
@@ -303,11 +305,11 @@ Sim_Daily_Hospitalizations = function(MU1=4,MU2 = 3.6,dat1 = StandardData,dat2 =
 
 
     cores=detectCores()
-    cl <- makeCluster(7,type="SOCK")#not to overload your computer
+    cl <- makeCluster(cores-1,type="SOCK")#not to overload your computer
     registerDoParallel(cl)
 
     final <- foreach(i=1:max_iter, .combine=cbind) %dopar% {
-
+      set.seed(seeds[i])
       run2.31 = (Simul_hosp(period=100, rt=dat1,muT=MU1,size=size2))$hospday
       run2.31
     }
@@ -318,12 +320,12 @@ Sim_Daily_Hospitalizations = function(MU1=4,MU2 = 3.6,dat1 = StandardData,dat2 =
 
 
     cores=detectCores()
-    cl <- makeCluster(7,type="SOCK")#not to overload your computer
+    cl <- makeCluster(cores-1,type="SOCK")#not to overload your computer
     registerDoParallel(cl)
 
 
     final <- foreach(i=1:max_iter, .combine=cbind) %dopar% {
-
+      set.seed(seeds[i])
       run2.32 = (Simul_hosp(period=100, rt=dat3,muT=MU1,size=size2))$hospday
       run2.32
     }
@@ -356,6 +358,9 @@ Sim_Daily_Hospitalizations = function(MU1=4,MU2 = 3.6,dat1 = StandardData,dat2 =
 
   }else{
 
+    allseeds = seq(1,10000,1)
+    seeds = sample(allseeds,max_iter)
+
     run1.11 = list()
     run1.12 = list()
     run1.21 = list()
@@ -374,47 +379,47 @@ Sim_Daily_Hospitalizations = function(MU1=4,MU2 = 3.6,dat1 = StandardData,dat2 =
 
 
       rr = dat1
-
+      set.seed(seeds[it])
       run1.11[[it]] = (Simul_hosp(period=100, muT=MU1,size=size1))$hospday
       rr=dat2
-
+      set.seed(seeds[it])
       run1.12[[it]] = (Simul_hosp(period=100, muT=MU1,size=size1))$hospday
 
 
       rr=dat1
-
+      set.seed(seeds[it])
       run1.21[[it]] = (Simul_hosp(period=100, muT=MU2,size=size1))$hospday
       rr=dat2
-
+      set.seed(seeds[it])
       run1.22[[it]] = (Simul_hosp(period=100, muT=MU2,size=size1))$hospday
 
 
       rr=dat1
-
+      set.seed(seeds[it])
       run1.31[[it]] = (Simul_hosp(period=100, muT=MU1,size=size2))$hospday
       rr=dat2
-
+      set.seed(seeds[it])
       run1.32[[it]] =  (Simul_hosp(period=100, muT=MU1,size=size2))$hospday
 
       rr=dat1
-
+      set.seed(seeds[it])
       run2.11[[it]] = (Simul_hosp(period=100, muT=MU1,size=size1))$hospday
       rr = dat3
-
+      set.seed(seeds[it])
       run2.12[[it]] = (Simul_hosp(period=100, muT=MU1,size=size1))$hospday
 
       rr=dat1
-
+      set.seed(seeds[it])
       run2.21[[it]] = (Simul_hosp(period=100, muT=MU2,size=size1))$hospday
       rr = dat3
-
+      set.seed(seeds[it])
       run2.22[[it]] = (Simul_hosp(period=100, muT=MU2,size=size1))$hospday
 
       rr=dat1
-
+      set.seed(seeds[it])
       run2.31[[it]] =  (Simul_hosp(period=100, muT=MU1,size=size2))$hospday
       rr = dat3
-
+      set.seed(seeds[it])
       run2.32[[it]] = (Simul_hosp(period=100, muT=MU1,size=size2))$hospday
     }
 
